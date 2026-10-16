@@ -1,0 +1,81 @@
+<!-- Barra superior informativa de cobertura local -->
+<div class="top-bar">
+  <div class="container top-bar-content">
+    <div class="top-bar-left">
+      <span class="location-badge"><i class="bi bi-geo-alt-fill text-gold"></i> Mosquera • Funza • Madrid • Bogotá</span>
+      <span class="safra-badge"><i class="bi bi-patch-check-fill text-gold"></i> Distribuidor Autorizado SAFRA</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="https://wa.me/573188676690" target="_blank" rel="noopener" class="top-contact">
+        <i class="bi bi-whatsapp"></i> Asesoría directa: <strong>318 8676690</strong>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Barra de navegación principal -->
+<header class="main-header">
+  <div class="container header-container">
+    
+    <!-- Logo y Nombre de Marca -->
+    <a href="#" class="brand-link" (click)="navegarA('inicio'); $event.preventDefault()">
+      <img src="assets/logo.png" alt="Persianas y Cortinas AS Logo" class="brand-logo" />
+      <div class="brand-text">
+        <span class="brand-title">Persianas & Cortinas <span class="brand-as">AS</span></span>
+        <span class="brand-subtitle">Distribuidor Autorizado SAFRA</span>
+      </div>
+    </a>
+
+    <!-- Menú Escritorio -->
+    <nav class="nav-links">
+      <a href="#inicio" (click)="navegarA('inicio'); $event.preventDefault()">Inicio</a>
+      <a href="#catalogo" (click)="navegarA('catalogo'); $event.preventDefault()">Catálogo</a>
+      <a href="#guia-medidas" (click)="navegarA('guia-medidas'); $event.preventDefault()">Cómo Medir</a>
+      <a href="#cotizador" (click)="navegarA('cotizador'); $event.preventDefault()">Cotizador</a>
+      <button type="button" class="nav-btn-link" (click)="abrirModalGarantia()">
+        <i class="bi bi-shield-check"></i> Garantía SAFRA
+      </button>
+    </nav>
+
+    <!-- Botón de acción principal -->
+    <div class="header-actions">
+      <button type="button" class="btn-gold header-cta" (click)="navegarA('cotizador')">
+        <i class="bi bi-calculator"></i> Cotizar Online
+      </button>
+
+      <!-- Botón Hamburguesa Móvil -->
+      <button type="button" class="mobile-toggle" (click)="toggleMenu()" aria-label="Menú">
+        <i class="bi" [class.bi-list]="!menuAbierto()" [class.bi-x-lg]="menuAbierto()"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Menú Desplegable Móvil -->
+  @if (menuAbierto()) {
+    <div class="mobile-menu">
+      <div class="container mobile-menu-links">
+        <a href="#inicio" (click)="navegarA('inicio'); $event.preventDefault()">
+          <i class="bi bi-house-door"></i> Inicio
+        </a>
+        <a href="#catalogo" (click)="navegarA('catalogo'); $event.preventDefault()">
+          <i class="bi bi-grid"></i> Catálogo de Sistemas
+        </a>
+        <a href="#guia-medidas" (click)="navegarA('guia-medidas'); $event.preventDefault()">
+          <i class="bi bi-rulers"></i> Cómo Medir tu Ventana
+        </a>
+        <a href="#cotizador" (click)="navegarA('cotizador'); $event.preventDefault()">
+          <i class="bi bi-calculator-fill"></i> Cotizador Inteligente
+        </a>
+        <button type="button" class="mobile-link-btn" (click)="abrirModalGarantia()">
+          <i class="bi bi-shield-check"></i> Garantía Oficial SAFRA
+        </button>
+        <div class="mobile-actions">
+          <a href="https://wa.me/573188676690?text=Hola%20Mario%20Davis,%20deseo%20informaci%C3%B3n%20de%20persianas" target="_blank" rel="noopener" class="btn-whatsapp w-full">
+            <i class="bi bi-whatsapp"></i> Hablar con Mario Davis
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</header>

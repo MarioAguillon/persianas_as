@@ -1,0 +1,138 @@
+<section id="guia-medidas" class="measures-section">
+  <div class="container">
+    
+    <div class="section-header text-center">
+      <span class="badge-gold">
+        <i class="bi bi-rulers"></i> Guía Paso a Paso
+      </span>
+      <h2 class="section-title">Aprende a Medir Tu Ventana Fácilmente</h2>
+      <p class="section-subtitle">
+        Toma una cinta métrica o metro metálico y sigue estos sencillos pasos. 
+        No te preocupes por la exactitud milimétrica: <strong>un técnico especializado rectificará las medidas con distanciómetro láser en tu domicilio</strong>.
+      </p>
+    </div>
+
+    <div class="measures-grid">
+      
+      <!-- Video Explicativo -->
+      <div class="video-container-card">
+        <div class="video-wrapper">
+          <!-- Reproductor de video interactivo compatible con video AI o Youtube -->
+          <div class="video-placeholder">
+            <img 
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" 
+              alt="Video demostrativo cómo medir persianas" 
+              class="video-poster"
+            />
+            <div class="video-overlay">
+              <div class="play-btn-circle">
+                <i class="bi bi-play-fill"></i>
+              </div>
+              <span class="video-title-overlay">Video Tutorial: Toma de Medidas Profesionales</span>
+              <span class="video-sub-overlay">Generado con IA para Persianas y Cortinas AS</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-footer-notes">
+          <p><i class="bi bi-info-circle-fill text-gold"></i> Utiliza siempre un metro metálico rígido. No uses metros de costura flexibles para evitar errores de tensión.</p>
+        </div>
+      </div>
+
+      <!-- Guía Interactiva por Pestañas -->
+      <div class="steps-card">
+        <div class="tabs-header">
+          <button 
+            type="button" 
+            class="tab-btn" 
+            [class.active]="tabActiva === 'fuera'"
+            (click)="cambiarTab('fuera')">
+            <i class="bi bi-box-arrow-up-right"></i> Por Fuera del Marco (Recomendado)
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn" 
+            [class.active]="tabActiva === 'dentro'"
+            (click)="cambiarTab('dentro')">
+            <i class="bi bi-box-arrow-in-down-left"></i> Por Dentro del Marco
+          </button>
+        </div>
+
+        <div class="tab-content">
+          @if (tabActiva === 'fuera') {
+            <div class="step-details">
+              <div class="step-badge">Instalación a Pared o Techo</div>
+              <h3 class="step-heading">Mayor cobertura y control de luz</h3>
+              <p class="step-text">
+                Ideal cuando quieres tapar completamente el marco de la ventana y lograr la máxima oscuridad o privacidad.
+              </p>
+
+              <ul class="step-list">
+                <li>
+                  <div class="step-num">1</div>
+                  <div class="step-info">
+                    <strong>Medir el Ancho Total:</strong>
+                    Mide el ancho del marco y suma <strong>+10 cm a cada lado</strong> (+20 cm en total) para evitar filtraciones de luz laterales.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">2</div>
+                  <div class="step-info">
+                    <strong>Medir el Alto Total:</strong>
+                    Mide la altura del marco y suma <strong>+10 a 15 cm arriba</strong> (para el cabezal o tubo) y <strong>+10 cm abajo</strong> del alféizar.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">3</div>
+                  <div class="step-info">
+                    <strong>Revisar Obstáculos:</strong>
+                    Verifica manijas salientes de ventanas o cajas de aire para considerar soportes de separación.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          } @else {
+            <div class="step-details">
+              <div class="step-badge">Instalación Embutida en Vano</div>
+              <h3 class="step-heading">Acabado empotrado y minimalista</h3>
+              <p class="step-text">
+                La persiana queda dentro del hueco de la ventana. Requiere al menos 6 a 8 cm de profundidad en el marco.
+              </p>
+
+              <ul class="step-list">
+                <li>
+                  <div class="step-num">1</div>
+                  <div class="step-info">
+                    <strong>Medir el Ancho en 3 Puntos:</strong>
+                    Mide el ancho en la parte superior, en el medio y en la parte inferior. Toma la medida <strong>más pequeña</strong> y resta <strong>1 cm</strong> de holgura.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">2</div>
+                  <div class="step-info">
+                    <strong>Medir el Alto en 3 Puntos:</strong>
+                    Mide la altura en el lado izquierdo, centro y derecho. Toma la medida menor.
+                  </div>
+                </li>
+                <li>
+                  <div class="step-num">3</div>
+                  <div class="step-info">
+                    <strong>Profundidad de Marco:</strong>
+                    Asegúrate de que la ventana abra hacia afuera o sea corrediza para que no choque con la persiana.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          }
+        </div>
+
+        <div class="steps-cta">
+          <button type="button" class="btn-gold w-full" (click)="irACotizador()">
+            <i class="bi bi-arrow-down-circle"></i> Ya tengo mis medidas aproximadas, ¡Cotizar!
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

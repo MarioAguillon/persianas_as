@@ -1,0 +1,243 @@
+<section id="cotizador" class="quoter-section">
+  <div class="container">
+    
+    <!-- Encabezado -->
+    <div class="section-header text-center">
+      <span class="badge-gold">
+        <i class="bi bi-calculator-fill"></i> Cotizador Inteligente
+      </span>
+      <h2 class="section-title">Calcula el Valor de Tus Persianas</h2>
+      <p class="section-subtitle">
+        Cotiza hasta 5 ventanas para tu sala y habitaciones. El sistema calcula en vivo el área y el precio aproximado con telas originales SAFRA.
+      </p>
+    </div>
+
+    <div class="quoter-layout">
+      
+      <!-- Columna Izquierda: Lista de Persianas -->
+      <div class="windows-container">
+        
+        @for (item of cotizadorService.items(); track item.id; let idx = $index) {
+          <div class="window-card">
+            <div class="window-card-header">
+              <div class="window-title-group">
+                <span class="window-index"><i class="bi bi-window"></i> Ventana {{ idx + 1 }}</span>
+                <span class="window-env-badge">{{ item.ambiente }}</span>
+              </div>
+              
+              @if (cotizadorService.items().length > 1) {
+                <button type="button" class="btn-remove-window" (click)="eliminarVentana(item.id)" title="Eliminar esta ventana">
+                  <i class="bi bi-trash3-fill"></i> Quitar
+                </button>
+              }
+            </div>
+
+            <div class="window-form-grid">
+              
+              <!-- 1. Estancia / Ambiente -->
+              <div class="form-group">
+                <label><i class="bi bi-tag-fill"></i> Espacio / Ambiente:</label>
+                <select [ngModel]="item.ambiente" (ngModelChange)="onAmbienteChange(item, $event)" class="form-control">
+                  @for (amb of ambientesSugeridos; track amb) {
+                    <option [value]="amb">{{ amb }}</option>
+                  }
+                  <option value="Otro ambiente">Otro ambiente</option>
+                </select>
+              </div>
+
+              <!-- 2. Sistema -->
+              <div class="form-group">
+                <label><i class="bi bi-grid-fill"></i> Sistema de Persiana:</label>
+                <select [ngModel]="item.sistemaId" (ngModelChange)="onSistemaChange(item, $event)" class="form-control">
+                  @for (sis of sistemas; track sis.id) {
+                    <option [value]="sis.id">{{ sis.nombre }}</option>
+                  }
+                </select>
+              </div>
+
+              <!-- 3. Tipo de Tela -->
+              <div class="form-group">
+                <label><i class="bi bi-layers-fill"></i> Tela de Referencia:</label>
+                <select [ngModel]="item.telaId" (ngModelChange)="onTelaChange(item, $event)" class="form-control">
+                  @for (tela of obtenerTelasDelSistema(item.sistemaId); track tela.id) {
+                    <option [value]="tela.id">
+                      {{ tela.nombre }}
+                    </option>
+                  }
+                </select>
+              </div>
+
+              <!-- 4. Medidas Ancho y Alto -->
+              <div class="form-group measures-dual-group">
+                <div class="measure-input-col">
+                  <label><i class="bi bi-arrows-expand"></i> Ancho (m):</label>
+                  <input 
+                    type="number" 
+                    step="0.05" 
+                    min="0.50" 
+                    max="6.00" 
+                    [ngModel]="item.anchoM" 
+                    (ngModelChange)="onMedidaChange(item, $event, item.altoM)"
+                    class="form-control"
+                    placeholder="Ej. 1.80"
+                  />
+                </div>
+                <div class="measure-input-col">
+                  <label><i class="bi bi-arrows-vertical"></i> Alto (m):</label>
+                  <input 
+                    type="number" 
+                    step="0.05" 
+                    min="0.50" 
+                    max="5.00" 
+                    [ngModel]="item.altoM" 
+                    (ngModelChange)="onMedidaChange(item, item.anchoM, $event)"
+                    class="form-control"
+                    placeholder="Ej. 2.10"
+                  />
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Desglose de Área y Subtotal de la Ventana -->
+            <div class="window-card-footer">
+              <div class="calc-meta">
+                <span>Área calculada: <strong>{{ item.areaCalculadaM2 }} m²</strong></span>
+                @if (item.areaFacturableM2 > item.areaCalculadaM2) {
+                  <span class="min-area-note">(Área mínima comercial: 1.00 m²)</span>
+                }
+              </div>
+              <div class="calc-subtotal">
+                <span class="subtotal-label">Subtotal Ventana {{ idx + 1 }}:</span>
+                <span class="subtotal-value">$ {{ item.subtotal.toLocaleString('es-CO') }} COP</span>
+              </div>
+            </div>
+
+          </div>
+        }
+
+        <!-- Botón para Agregar otra Ventana -->
+        <div class="add-window-box">
+          @if (cotizadorService.puedeAgregarMas()) {
+            <button type="button" class="btn-outline btn-add-window" (click)="agregarVentana()">
+              <i class="bi bi-plus-circle-fill"></i> Agregar Otra Persiana ({{ cotizadorService.totalVentanas() }} de 5)
+            </button>
+          } @else {
+            <div class="limit-reached-badge">
+              <i class="bi bi-info-circle-fill"></i> Has alcanzado el límite de 5 persianas por cotización en línea. Si tienes más ventanas, nuestro técnico especializado las adicionará en la visita técnica.
+            </div>
+          }
+        </div>
+
+        <!-- Alerta de Sistemas Especiales y Perfiles Coverlight -->
+        <div class="special-systems-tip">
+          <div class="tip-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <div class="tip-text">
+            <strong>¿Buscas sistema doble (Sheer + Blackout en una sola ventana) o perfiles Coverlight cero luz?</strong>
+            <p>
+              Estos sistemas de alta gama requieren instalación especializada con soportes dobles o canales laterales de aluminio. 
+              Selecciona tus medidas base y contáctanos para coordinarlo con nuestro técnico especializado en la visita.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Columna Derecha: Formulario de Contacto y Resumen Total -->
+      <div class="summary-sidebar">
+        
+        <div class="sidebar-card">
+          <h3 class="sidebar-title"><i class="bi bi-person-badge-fill text-gold"></i> Tus Datos de Contacto</h3>
+          <p class="sidebar-sub">Para enviar tu cotización personalizada y coordinar la visita:</p>
+
+          <div class="lead-form">
+            
+            <div class="form-group">
+              <label>Tu Nombre Completo:</label>
+              <input 
+                type="text" 
+                [(ngModel)]="cotizadorService.cliente().nombre" 
+                class="form-control" 
+                placeholder="Ej. Carlos Martínez"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Teléfono Celular / WhatsApp:</label>
+              <input 
+                type="tel" 
+                [(ngModel)]="cotizadorService.cliente().telefono" 
+                class="form-control" 
+                placeholder="Ej. 310 123 4567"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Municipio de Instalación:</label>
+              <select [(ngModel)]="cotizadorService.cliente().municipio" class="form-control">
+                <option value="Mosquera">📍 Mosquera (Atención Prioritaria)</option>
+                <option value="Funza">📍 Funza (Atención Prioritaria)</option>
+                <option value="Madrid">📍 Madrid (Atención Prioritaria)</option>
+                <option value="Facatativá">📍 Facatativá</option>
+                <option value="Bogotá">📍 Bogotá D.C.</option>
+                <option value="Otro cercano">📍 Otro municipio cercano</option>
+              </select>
+            </div>
+
+            <!-- Honeypot invisible para protección de bots -->
+            <input 
+              type="text" 
+              name="website_anti_bot" 
+              [(ngModel)]="honeypotField" 
+              style="display:none !important;" 
+              tabindex="-1" 
+              autocomplete="off" 
+            />
+
+          </div>
+
+          <!-- Resumen de Costos -->
+          <div class="total-summary-box">
+            <div class="summary-line">
+              <span>Total Persianas:</span>
+              <strong>{{ cotizadorService.totalVentanas() }} {{ cotizadorService.totalVentanas() === 1 ? 'unidad' : 'unidades' }}</strong>
+            </div>
+            <div class="summary-line">
+              <span>Área total aproximada:</span>
+              <strong>{{ cotizadorService.granTotalAreaM2().toFixed(2) }} m²</strong>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="grand-total-row">
+              <span class="total-text">TOTAL ESTIMADO:</span>
+              <span class="total-amount">$ {{ cotizadorService.granTotalEstimado().toLocaleString('es-CO') }} COP</span>
+            </div>
+
+            <p class="disclaimer-note">
+              * Valores de referencia calculados con telas originales SAFRA y accesorios estándar. Sujeto a rectificación final de medidas en visita técnica con nuestro equipo especializado.
+            </p>
+          </div>
+
+          <!-- Botón de Envío a WhatsApp -->
+          <button 
+            type="button" 
+            class="btn-whatsapp w-full btn-quote-whatsapp" 
+            (click)="enviarCotizacionWhatsApp()">
+            <i class="bi bi-whatsapp"></i> Enviar Cotización por WhatsApp
+          </button>
+
+          <div class="direct-consult-note">
+            <button type="button" class="btn-guarantee-link" (click)="abrirModalGarantia()">
+              <i class="bi bi-shield-check"></i> Ver Respaldo y Garantía SAFRA (3 a 5 años)
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

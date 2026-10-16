@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:root {
+  /* Paleta Extraída del Logo y Maderas Finas */
+  --bg-main: #FDFBF8;
+  --bg-surface: #FFFFFF;
+  --bg-alt: #F7F3EE;
+  
+  --brand-primary: #7C5335;      /* Tono madera noble / Marco */
+  --brand-dark: #442917;         /* Café tostado intenso */
+  --brand-light: #F4EBE2;        /* Crema suave */
+  
+  --gold-accent: #C89D66;        /* Bisel dorado / champagne */
+  --gold-hover: #B5884F;
+  --gold-light: #FBF4EA;
+
+  --text-main: #231B15;          /* Espresso profundo / Máxima legibilidad */
+  --text-muted: #6E6157;         /* Gris tierra cálido */
+  --text-light: #9B8D82;
+
+  --border-subtle: #EAE3DA;
+  --border-focus: #C89D66;
+
+  --whatsapp: #25D366;
+  --whatsapp-hover: #1EBE5D;
+
+  --shadow-sm: 0 2px 8px rgba(35, 27, 21, 0.04);
+  --shadow-md: 0 8px 24px rgba(35, 27, 21, 0.08);
+  --shadow-lg: 0 16px 40px rgba(35, 27, 21, 0.12);
+  --shadow-gold: 0 8px 25px rgba(200, 157, 102, 0.25);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--bg-main);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/* Contenedor responsivo */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Badge distintivo */
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: var(--gold-light);
+  color: var(--brand-dark);
+  border: 1px solid var(--gold-accent);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Botones universales */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-dark));
+  color: #FFFFFF;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.98rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(68, 41, 23, 0.25);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--gold-accent), var(--gold-hover));
+  color: #FFFFFF;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.98rem;
+  box-shadow: var(--shadow-gold);
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--whatsapp);
+  color: #FFFFFF;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--brand-primary);
+  border: 1.5px solid var(--border-subtle);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--brand-primary);
+  background-color: var(--brand-light);
+}
+
+/* Efecto sutil de marca de agua en secciones */
+.brand-watermark-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-watermark-bg::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background-image: url('/assets/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 0;
+}

@@ -1,0 +1,364 @@
+.quoter-section {
+  padding: 80px 0;
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.quoter-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 35px;
+  align-items: flex-start;
+}
+
+/* Tarjetas de Ventanas */
+.windows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.window-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.window-card:hover {
+  border-color: var(--gold-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.window-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.window-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.window-index {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.window-env-badge {
+  background: var(--gold-light);
+  color: var(--brand-dark);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.btn-remove-window {
+  background: none;
+  color: #DC2626;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.btn-remove-window:hover {
+  background-color: #FEE2E2;
+}
+
+/* Formulario Grid */
+.window-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface);
+  font-size: 0.94rem;
+  color: var(--text-main);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 0 3px rgba(200, 157, 102, 0.15);
+}
+
+.measures-dual-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.measure-input-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Footer de la Ventana */
+.window-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-alt);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+}
+
+.calc-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.min-area-note {
+  font-size: 0.75rem;
+  color: var(--gold-hover);
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+.calc-subtotal {
+  text-align: right;
+}
+
+.subtotal-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.subtotal-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+/* Botón Agregar Ventana */
+.add-window-box {
+  margin-top: 5px;
+}
+
+.btn-add-window {
+  width: 100%;
+  padding: 14px;
+  border: 2px dashed var(--gold-accent);
+  color: var(--brand-dark);
+  font-weight: 700;
+  background-color: var(--gold-light);
+}
+
+.btn-add-window:hover {
+  background-color: var(--gold-accent);
+  color: #FFFFFF;
+}
+
+.limit-reached-badge {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tip Sistemas Especiales */
+.special-systems-tip {
+  background: #FFFDF9;
+  border: 1px solid var(--gold-light);
+  border-left: 4px solid var(--gold-accent);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.tip-icon {
+  font-size: 1.4rem;
+  color: var(--gold-accent);
+  flex-shrink: 0;
+}
+
+.tip-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.tip-text p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Sidebar Resumen */
+.summary-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.sidebar-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 26px;
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* Caja de Totales */
+.total-summary-box {
+  background: var(--bg-alt);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 22px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.summary-line strong {
+  color: var(--text-main);
+}
+
+.summary-divider {
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: 12px 0;
+}
+
+.grand-total-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.total-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-hover);
+  letter-spacing: 0.5px;
+}
+
+.total-amount {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--brand-primary);
+  line-height: 1.1;
+}
+
+.disclaimer-note {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+.btn-quote-whatsapp {
+  padding: 16px;
+  font-size: 1.02rem;
+}
+
+.direct-consult-note {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.btn-guarantee-link {
+  background: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.btn-guarantee-link:hover {
+  color: var(--gold-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .quoter-layout {
+    grid-template-columns: 1fr;
+  }
+  .window-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .summary-sidebar {
+    position: static;
+  }
+}

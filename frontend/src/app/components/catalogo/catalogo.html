@@ -1,0 +1,82 @@
+<section id="catalogo" class="catalog-section">
+  <div class="container">
+    
+    <!-- Encabezado de Sección -->
+    <div class="section-header text-center">
+      <span class="badge-gold">
+        <i class="bi bi-collection-fill"></i> Catálogo Seleccionado SAFRA
+      </span>
+      <h2 class="section-title">Los 3 Sistemas Más Pedidos Para Tu Hogar</h2>
+      <p class="section-subtitle">
+        Diseñados a la medida exacta con telas originales y componentes de máxima durabilidad. 
+        Precios claros por metro cuadrado sin sorpresas.
+      </p>
+    </div>
+
+    <!-- Grilla de Sistemas -->
+    <div class="catalog-grid">
+      @for (sistema of sistemas; track sistema.id) {
+        <div class="system-card">
+          <div class="card-media">
+            <img [src]="sistema.imagen" [alt]="sistema.nombre" class="card-img" />
+            <div class="card-tag">
+              <i [class]="'bi ' + sistema.icono"></i> {{ sistema.nombre }}
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3 class="card-title">{{ sistema.nombre }}</h3>
+            <span class="card-sub">{{ sistema.subtitulo }}</span>
+            <p class="card-desc">{{ sistema.descripcion }}</p>
+
+            <div class="card-ideal">
+              <strong><i class="bi bi-house-check"></i> Ideal para:</strong> {{ sistema.idealPara }}
+            </div>
+
+            <!-- Telas de Referencia con Precios -->
+            <div class="fabrics-box">
+              <h4 class="fabrics-header">Telas Principales Disponibles:</h4>
+              @for (tela of sistema.telas; track tela.id) {
+                <div class="fabric-row">
+                  <div class="fabric-info">
+                    <span class="fabric-name">{{ tela.nombre }}</span>
+                    <span class="fabric-desc">{{ tela.descripcion }}</span>
+                  </div>
+                  <div class="fabric-price">
+                    <span class="price-val">Consultar cotizador</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Botón de Acción -->
+            <button type="button" class="btn-primary w-full card-action-btn" (click)="cotizarSistema(sistema)">
+              <i class="bi bi-calculator"></i> Cotizar {{ sistema.nombre }}
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Banner Informativo de Muestrario Físico -->
+    <div class="physical-catalog-banner">
+      <div class="banner-icon">
+        <i class="bi bi-palette-fill"></i>
+      </div>
+      <div class="banner-text">
+        <h3>¿Buscas más texturas, estampados o colores específicos?</h3>
+        <p>
+          En la visita técnica a domicilio en <strong>Mosquera, Funza, Madrid o Bogotá</strong>, 
+          <strong>nuestro equipo técnico</strong> te lleva el catálogo físico de SAFRA con más de <strong>50 telas reales</strong> 
+          para que sientas la textura y compares los tonos directamente frente a la luz de tu ventana.
+        </p>
+      </div>
+      <div class="banner-action">
+        <a href="https://wa.me/573188676690?text=Hola%20Mario%20Davis,%20me%20gustar%C3%ADa%20agendar%20una%20visita%20para%20ver%20el%20muestrario%20f%C3%ADsico%20de%20telas" target="_blank" rel="noopener" class="btn-whatsapp">
+          <i class="bi bi-whatsapp"></i> Solicitar Muestrario a Domicilio
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

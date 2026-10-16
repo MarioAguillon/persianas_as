@@ -1,0 +1,248 @@
+.catalog-section {
+  padding: 80px 0;
+  background-color: var(--bg-surface);
+}
+
+.section-header {
+  max-width: 720px;
+  margin: 0 auto 50px auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  margin-top: 14px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+/* Grilla de Sistemas */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.system-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.system-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold-accent);
+}
+
+.card-media {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.system-card:hover .card-img {
+  transform: scale(1.05);
+}
+
+.card-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(35, 27, 21, 0.85);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.card-sub {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--gold-hover);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.card-ideal {
+  background-color: var(--bg-alt);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.card-ideal strong {
+  color: var(--brand-dark);
+}
+
+/* Telas Disponibles */
+.fabrics-box {
+  background: var(--bg-main);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 22px;
+  margin-top: auto;
+}
+
+.fabrics-header {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.fabric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(234, 227, 218, 0.7);
+}
+
+.fabric-row:last-child {
+  border-bottom: none;
+}
+
+.fabric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.fabric-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.fabric-desc {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.fabric-price {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-val {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-hover);
+  font-style: italic;
+}
+
+.price-unit {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.card-action-btn {
+  margin-top: 10px;
+}
+
+/* Banner de Catálogo Físico */
+.physical-catalog-banner {
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand-primary));
+  border-radius: var(--radius-lg);
+  padding: 35px 40px;
+  color: #FFFFFF;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 25px;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+.banner-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--gold-light);
+}
+
+.banner-text h3 {
+  font-size: 1.35rem;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.banner-text p {
+  font-size: 0.94rem;
+  color: var(--bg-alt);
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .physical-catalog-banner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .banner-icon {
+    margin: 0 auto;
+  }
+}
